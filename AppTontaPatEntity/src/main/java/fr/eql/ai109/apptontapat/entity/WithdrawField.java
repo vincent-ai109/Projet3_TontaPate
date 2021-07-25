@@ -10,16 +10,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name = "race")
-public class Race implements Serializable{
+@Table(name = "withdraw_field")
+public class WithdrawField implements Serializable {
 
 	/**
 	 * 
@@ -29,51 +25,31 @@ public class Race implements Serializable{
 	/******************************************************************************************/
 	/*                              Variable declaration                                      */
 	/*****************************************************************************************/
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "r_label")
+	@Column(name = "wf_label")
 	private String label;
-	@OneToMany(mappedBy = "race", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Herd> herd;
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Specie specie;
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Vegetation vegetation;
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Slope slope;
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id")
-	private GlassHeight glassheight;
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Humidity humidity;
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Composition composition;
-
+	@OneToMany(mappedBy = "withdraw_field", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Field> fields;
 	
 	/*****************************************************************************************/
 	/*                                     Constructors                                      */
 	/*****************************************************************************************/
 
-	public Race(Integer id, String label) {
+	public WithdrawField() {
+		super();
+	}
+
+	public WithdrawField(Integer id, String label, Set<Field> fields) {
 		super();
 		this.id = id;
 		this.label = label;
+		this.fields = fields;
 	}
-
-
-	public Race() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/******************************************************************************************/
 	/*                             Getters and setters                                        */
 	/******************************************************************************************/
@@ -82,23 +58,28 @@ public class Race implements Serializable{
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getLabel() {
 		return label;
 	}
 
-
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
+	public Set<Field> getFields() {
+		return fields;
+	}
 
+	public void setFields(Set<Field> fields) {
+		this.fields = fields;
+	}
 	
 	
 	
+	
+
 }

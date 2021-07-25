@@ -42,6 +42,8 @@ public class ZipCode implements Serializable{
 	private Set<Account> accounts;
 	@OneToMany(mappedBy = "zipcode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Herd> herds;
+	@OneToMany(mappedBy = "zipcode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Field> fields;
 
 	/*****************************************************************************************/
 	/*                                     Constructors                                      */

@@ -73,6 +73,8 @@ public class Account implements Serializable{
 	private EvacuateA evacuatea;
 	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Herd> herds;
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Field> fields;
 	
 	/*****************************************************************************************/
 	/*                                     Constructors                                      */

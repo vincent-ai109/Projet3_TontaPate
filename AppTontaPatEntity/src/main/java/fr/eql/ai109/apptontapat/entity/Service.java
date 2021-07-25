@@ -68,6 +68,9 @@ public class Service implements Serializable{
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id")
 	private Herd herd;
+	@ManyToOne
+	@JoinColumn(referencedColumnName = "id")
+	private Field field;
 
 	/*****************************************************************************************/
 	/*                                     Constructors                                      */
